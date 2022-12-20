@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/*=============== VARIABLES CSS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+:root {
+  /*1 rem = 16px*/
+  --header-height: 1rem;
+  --body-font: "Poppins", sans-serif;
+  --biggest-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  --button-width:15.62rem;
+  /*========== Font weight ==========*/
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  /*========== Margenes ==========*/
+  --mb-0-5: .5rem;
+  --mb-0-75: .75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 3rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+    --button-width:20rem;
+  }
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+  transition: 0.5s;
+}
+
+h1, h2, h3 {
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+  line-height: 1.5;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.section {
+  padding: 4.5rem 0 1rem;
+}
+.section__title, .section__title-center {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  text-align: center;
+  margin-bottom: var(--mb-1);
+}
+
+/*===================Layout====================*/
+.container {
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.flex__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons__quiz {
+  width: var(--button-width);
+  padding: 25px 0;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 23px;
+  font-weight: bold;
+  transform: scale(0.98);
+  transition: all 0.2s ease-in-out;
+  opacity: 0.9;
+}
+.buttons__quiz:active, .buttons__quiz:hover {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.quiz__intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #36bcf6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.quiz__intro .heading {
+  font-size: 80px;
+  color: #fff;
+  position: absolute;
+  top: 100px;
+  width: 90%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media screen and (max-width: 1000px) {
+  .quiz__intro .heading {
+    font-size: 70px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .quiz__intro .heading {
+    font-size: 50px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .quiz__intro .heading {
+    font-size: 30px;
+  }
+}
