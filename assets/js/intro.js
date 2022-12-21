@@ -7,7 +7,7 @@ console.log(heading)
 let i=0
 
     let typeWraper=setInterval(function(){
-        heading.textContent+=myText[i]
+        heading.innerHTML+=myText[i]
         i=i+1;
         if(i>myText.length - 1){
             clearInterval(typeWraper)

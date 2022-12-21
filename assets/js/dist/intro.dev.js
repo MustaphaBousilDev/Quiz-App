@@ -6,7 +6,7 @@ var myText = "Hello in Quiz JavaScript";
 console.log(heading);
 var i = 0;
 var typeWraper = setInterval(function () {
-  heading.textContent += myText[i];
+  heading.innerHTML += myText[i];
   i = i + 1;
 
   if (i > myText.length - 1) {

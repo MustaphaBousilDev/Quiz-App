@@ -1,0 +1,124 @@
+.quiz {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quiz .content {
+  width: 80%;
+  min-height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+.quiz .content .head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f3f0f0;
+  align-items: center;
+  padding: 10px 5px;
+}
+.quiz .content .head h3 {
+  font-size: 22px;
+  color: #4e4c4c;
+}
+.quiz .content .head p {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quiz .content .body {
+  padding: 10px 5px;
+}
+.quiz .content .body form {
+  margin-top: 20px;
+}
+.quiz .content .body form .field {
+  min-height: 80px;
+  margin-top: 15px;
+  display: flex;
+}
+@media screen and (max-width: 800px) {
+  .quiz .content .body form .field {
+    flex-direction: column;
+    margin-top: 0px;
+  }
+}
+.quiz .content .body form .field p {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: 1px solid #000;
+  padding: 10px 25px;
+  border-radius: 15px;
+  transition: 0.3s;
+  transform: scale(0.98);
+}
+.quiz .content .body form .field p:hover {
+  transform: scale(1);
+}
+.quiz .content .body form .field p.chicked {
+  color: #4f4f4f;
+  transform: scale(1);
+  background-color: #b8edfd;
+  border: 1px solid #7dadff;
+  position: relative;
+}
+.quiz .content .body form .field p.chicked .icon-check {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border: 2px solid #5c97fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #5c97fd;
+  font-weight: bolder;
+}
+@media screen and (max-width: 800px) {
+  .quiz .content .body form .field p {
+    width: calc(100% - 10px);
+    margin-top: 10px;
+  }
+}
+.quiz .content .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #f3f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  padding: 0 15px;
+}
+.quiz .content .footer button {
+  background-color: #0077ff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 6px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+.quiz .content .footer button:hover {
+  opacity: 1;
+}
