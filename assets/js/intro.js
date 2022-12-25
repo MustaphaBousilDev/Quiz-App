@@ -5,7 +5,6 @@ let myText="Hello in Quiz JavaScript"
 console.log(heading)
 
 let i=0
-
     let typeWraper=setInterval(function(){
         heading.innerHTML+=myText[i]
         i=i+1;

@@ -7,11 +7,17 @@
 }
 .quiz .content {
   width: 80%;
-  min-height: 500px;
+  background-color: #fff;
+  min-height: 600px;
   background-color: #fff;
   border-radius: 10px;
   padding: 15px;
   position: relative;
+}
+@media screen and (max-width: 800px) {
+  .quiz .content {
+    min-height: 800px;
+  }
 }
 .quiz .content .head {
   display: flex;
@@ -38,6 +44,22 @@
 .quiz .content .body {
   padding: 10px 5px;
 }
+.quiz .content .body ul {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.quiz .content .body ul li {
+  width: 20px;
+  height: 20px;
+  background-color: #f5f3f3;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.quiz .content .body ul li.active {
+  background-color: #7dadff;
+}
 .quiz .content .body form {
   margin-top: 20px;
 }
@@ -55,11 +77,11 @@
 .quiz .content .body form .field p {
   width: calc(50% - 10px);
   margin-right: 10px;
+  overflow: hidden;
   display: flex;
   cursor: pointer;
   align-items: center;
   border: 1px solid #000;
-  padding: 10px 25px;
   border-radius: 15px;
   transition: 0.3s;
   transform: scale(0.98);
@@ -121,4 +143,147 @@
 }
 .quiz .content .footer button:hover {
   opacity: 1;
+}
+.quiz .content .btn__next {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background-color: #5ba0ee;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.quiz .info {
+  background: #fff;
+  padding: 20px;
+  width: 80%;
+  border-radius: 10px;
+}
+.quiz .info div {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz .info .information {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.quiz .info .information h3 {
+  margin-top: 15px;
+}
+.quiz .info .information h2 {
+  text-align: center;
+  margin-top: 30px;
+  color: #7dadff;
+}
+.quiz .info .information button {
+  margin-top: 30px;
+  padding: 15px 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background: #7dadff;
+  transform: scale(0.985);
+  transition: 0.3s;
+}
+.quiz .info .information button:hover, .quiz .info .information button:active {
+  background-color: #5a95fc;
+  transform: scale(1);
+}
+.quiz .score {
+  background-color: #fff;
+  width: 80%;
+  height: 90%;
+  padding: 15px;
+  border-radius: 10px;
+}
+.quiz .score h2 {
+  justify-content: center;
+  display: flex;
+}
+.quiz .score h2 p {
+  color: #0066ff;
+}
+.quiz .score div {
+  display: flex;
+  height: 200px;
+  font-weight: bold;
+  font-size: 22px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.quiz .score div span {
+  color: green;
+}
+.quiz .score .div_buttons button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  width: 140px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.8;
+  color: #fff;
+  background-color: #2364ef;
+  transform: scale(0.98);
+  display: flex;
+  transition: 0.3s ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+.quiz .score .div_buttons button:hover, .quiz .score .div_buttons button:active {
+  transform: scale(1);
+  opacity: 1;
+}
+.quiz .correction {
+  background-color: #fff;
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+  overflow-y: scroll;
+  padding: 15px;
+}
+.quiz .correction h3 {
+  text-align: center;
+}
+.quiz .correction .question {
+  margin-top: 25px;
+}
+.quiz .correction .question p {
+  font-weight: bold;
+}
+.quiz .correction .question ul {
+  margin-left: 10px;
+}
+.quiz .correction .question ul li {
+  background-color: #f4f4f4;
+  margin-bottom: 5px;
+  border: 1px solid #cdcdcd;
+  width: 80%;
+  padding: 5px 0 5px 15px;
+  border-radius: 60px;
+}
+.quiz .correction .question ul li.correct {
+  background-color: #b3f7b3;
+  color: #4fa54f;
+  border-color: #b3f7b3;
+}
+.quiz .correction .question ul li.incorrect {
+  background-color: #f7c5b3;
+  color: #da2417;
+  border-color: #f7b3b3;
+}
+.quiz .correction .question ul li.exp {
+  border-radius: 6px;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #9cd9ff;
+  color: #2d86b7;
+  border-color: #9cd9ff;
 }
