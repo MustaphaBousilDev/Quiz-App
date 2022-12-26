@@ -11,22 +11,22 @@
     
 </head>
 <body>
-    <div class="container quiz">
+    <div class="container quiz" style="display: flex;flex-direction: column;">
+        <ul class="step-wizard-list">
+            <li class="step-wizard-item one current-item">
+                <span class="progress-count">1</span>
+                <span class="progress-label">Info</span>
+            </li>
+            <li class="step-wizard-item two current-item">
+                <span class="progress-count">2</span>
+                <span class="progress-label">Quiz</span>
+            </li>
+            <li class="step-wizard-item three current-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">Resultant</span>
+            </li>
+        </ul>
         <div class="content">
-            <ul class="step-wizard-list ">
-                <li class="step-wizard-item">
-                    <span class="progress-count">1</span>
-                    <span class="progress-label">Info</span>
-                </li>
-                <li class="step-wizard-item current-item">
-                    <span class="progress-count">2</span>
-                    <span class="progress-label">Quiz</span>
-                </li>
-                <li class="step-wizard-item current-item">
-                    <span class="progress-count">3</span>
-                    <span class="progress-label">Resultant</span>
-                </li>
-            </ul>
             <div class="head">
                 <h3>Quiz Application</h3>
                 <p>60</p>
@@ -56,12 +56,8 @@
                     </div>
                     
                 </form>
-                <ul>
-                    <li class="active"></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul class="ul__progress_bar">
+                    
                 </ul>
             </div>
             <div class="footer">
@@ -86,7 +82,7 @@
         </div>
         <div class='score'>
             <h2>Hello : <p>Mustapha</p></h2>
-            <div>Score <p>6/10</p><span>Success</span></div>
+            <div class="quiz__score">Score <p>6/10</p><span>Success</span></div>
             
             <div class="div_buttons">
                 <button onclick="window.location.reload()">Replay</button>

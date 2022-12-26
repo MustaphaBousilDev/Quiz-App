@@ -2,6 +2,12 @@
 //if(yourname==null || yourname==''){
 //window.location.href="quiz.html"
 //}
+document.querySelector('.info').style.display="block"
+document.querySelector('.content').style.display="none"
+document.querySelector('.correction').style.display="none"
+document.querySelector('.score').style.display="none"
+
+
 let answers_all=document.querySelectorAll('.answer')
 let question_ele=document.querySelector('#question')
 let answer_a=document.querySelector('#a_text')
@@ -9,6 +15,12 @@ let answer_b=document.querySelector('#b_text')
 let answer_c=document.querySelector('#c_text')
 let answer_d=document.querySelector('#d_text')
 let btn_next_q=document.querySelector('.btn__next')
+let ul__bar=document.querySelector('.ul__progress_bar')
+let ul_li=document.querySelectorAll('.ul__progress_bar li')
+let li_item=Array.from(ul_li)
+console.log(ul_li)
+
+
 let score=0
 let current_quiz=0
 
@@ -31,10 +43,17 @@ xmlhttp.onreadystatechange = function() {
         let d=data[current_quiz].d
         load_quiz(question,a,b,c,d);
         
+        //create li progress bare
+        bullits(data.length);
+        active_progrees()
+        
     }
 };
+
 xmlhttp.open("GET", url,true);
 xmlhttp.send();
+
+
 
 ///////////////////////////////////////////////////////////
 
@@ -44,11 +63,12 @@ btn_next_q.addEventListener('click',function(e){
     console.log(data.length)
     if(answer){
         if(answer===data[current_quiz].correct){
-            console.log('fuck me')
             score++;
         }
         current_quiz++;
+        //active_progrees()
         if(current_quiz < data.length){
+            active_progrees()
             let question=data[current_quiz].question 
             let a=data[current_quiz].a 
             let b=data[current_quiz].b 
@@ -58,7 +78,10 @@ btn_next_q.addEventListener('click',function(e){
         }else{
             document.querySelector('.content').style.display="none"
             document.querySelector('.info').style.display="none"
-            document.querySelector('.quiz').innerHTML=`Your Answer Correctly${score}/${data.length}`
+            document.querySelector('.score').style.display="block"
+            document.querySelector('.correction').style.display="none"
+            document.querySelector('.two').classList.remove('current-item')
+            document.querySelector('.quiz__score').innerHTML=`Your Answer Correctly${score}/${data.length}`
         }
     }
 })
@@ -67,13 +90,12 @@ btn_next_q.addEventListener('click',function(e){
 
 
 
-document.querySelector('.content').style.display="none"
-document.querySelector('.info').style.display="none"
-document.querySelector('.score').style.display="none"
+
 
 document.querySelector('.btn_start_quiz').addEventListener('click',()=>{
     document.querySelector('.content').style.display="block"
     document.querySelector('.info').style.display="none"
+    document.querySelector('.one').classList.remove('current-item')
     
     document.addEventListener('click',function(e){
         if(e.target.classList.contains('paragraph')){
@@ -89,6 +111,17 @@ document.querySelector('.btn_start_quiz').addEventListener('click',()=>{
     //document.querySelector('.content').innerHTML=``
     
 })
+
+
+
+document.querySelector('.correction_quize').addEventListener('click',()=>{
+    document.querySelector('.info').style.display="none"
+    document.querySelector('.content').style.display="none"
+    document.querySelector('.correction').style.display="block"
+    document.querySelector('.score').style.display="none"
+    document.querySelector('.three').classList.remove('current-item')
+})
+
 
 
 function remove_active_all(){
@@ -123,6 +156,20 @@ function deselect_answer(){
     })
 }
 
+function bullits(len){
+    for(let i=0;i<len;i++){
+        let pagination_item=document.createElement('li')
+        pagination_item.setAttribute('data-index',i)
+        ul__bar.append(pagination_item)
+    }
+}
+
+
+    function active_progrees(){
+        let li=ul__bar.querySelectorAll('li')
+        console.log(li)
+        li[current_quiz].classList.add('active')
+    }
 
 
 
