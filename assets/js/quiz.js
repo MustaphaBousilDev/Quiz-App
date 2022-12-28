@@ -6,7 +6,7 @@ document.querySelector('.info').style.display="block"
 document.querySelector('.content').style.display="none"
 document.querySelector('.correction').style.display="none"
 document.querySelector('.score').style.display="none"
-
+let randome_data=[]
 
 let answers_all=document.querySelectorAll('.answer')
 let question_ele=document.querySelector('#question')
@@ -18,12 +18,12 @@ let btn_next_q=document.querySelector('.btn__next')
 let ul__bar=document.querySelector('.ul__progress_bar')
 let ul_li=document.querySelectorAll('.ul__progress_bar li')
 let li_item=Array.from(ul_li)
-console.log(ul_li)
+//console.log(ul_li)
 
 
 let score=0
 let current_quiz=0
-
+let my__answer=[]
 let answers=document.querySelectorAll('.content form p')
 let answers_list=Array.from(answers)
 
@@ -36,16 +36,60 @@ xmlhttp.onreadystatechange = function() {
         var myArr = JSON.parse(this.responseText);
         data=myArr
         //console.log(data[0])
-        let question=data[current_quiz].question 
-        let a=data[current_quiz].a 
-        let b=data[current_quiz].b 
-        let c=data[current_quiz].c 
-        let d=data[current_quiz].d
+        
+        console.log(data)
+        var mainSerie = []
+        var aliasSerie=[]
+        var q= 0
+        var result
+        let n=data.length
+        for (var i = 0; i < n ; i++) {
+            mainSerie.push(i)
+
+        }
+        console.log(mainSerie)
+       
+        
+        
+        //console.log('fffff'+n)
+        const s=n
+        while(aliasSerie.length<s){
+            q=mainSerie[Math.floor(Math.random() *  n)];
+            n--
+            aliasSerie.push(q)
+            result = q
+            mainSerie.splice(mainSerie.indexOf(q),1)
+            
+        }
+        console.log(aliasSerie)
+        
+        for(let i=0;i<aliasSerie.length;i++){
+            let n=aliasSerie[i];
+            randome_data[i]=data[n]
+        }
+        console.log(randome_data)
+        
+        let question=randome_data[current_quiz].question 
+        let a=randome_data[current_quiz].a 
+        let b=randome_data[current_quiz].b 
+        let c=randome_data[current_quiz].c 
+        let d=randome_data[current_quiz].d
         load_quiz(question,a,b,c,d);
+
+        
         
         //create li progress bare
         bullits(data.length);
         active_progrees()
+        document.querySelector('.correction').addEventListener('click',function(){
+            fetch_resultant(randome_data,my__answer)
+            console.log('ttt')
+        })
+            
+        
+
+        //fetch resultant 
+
         
     }
 };
@@ -59,8 +103,8 @@ xmlhttp.send();
 
 btn_next_q.addEventListener('click',function(e){
     let answer=getSelectAnswer();
-    console.log(answer)
-    console.log(data.length)
+    //console.log(answer)
+    //console.log(data.length)
     if(answer){
         if(answer===data[current_quiz].correct){
             score++;
@@ -76,12 +120,17 @@ btn_next_q.addEventListener('click',function(e){
             let d=data[current_quiz].d
             load_quiz(question,a,b,c,d);
         }else{
+            fetch_resultant(randome_data,my__answer)
+            console.log('guvkk')
+            console.log(randome_data)
+            console.log(my__answer)
             document.querySelector('.content').style.display="none"
             document.querySelector('.info').style.display="none"
             document.querySelector('.score').style.display="block"
             document.querySelector('.correction').style.display="none"
             document.querySelector('.two').classList.remove('current-item')
             document.querySelector('.quiz__score').innerHTML=`Your Answer Correctly${score}/${data.length}`
+            
         }
     }
 })
@@ -118,8 +167,10 @@ document.querySelector('.correction_quize').addEventListener('click',()=>{
     document.querySelector('.info').style.display="none"
     document.querySelector('.content').style.display="none"
     document.querySelector('.correction').style.display="block"
+    document.querySelector('.correction').classList.add('clicked')
     document.querySelector('.score').style.display="none"
     document.querySelector('.three').classList.remove('current-item')
+    
 })
 
 
@@ -145,7 +196,9 @@ function getSelectAnswer(){
     answers_all.forEach((answer)=>{
         if(answer.checked){
             my_answer=answer.id 
-            //console.log(my_answer)
+            
+            my__answer.push(my_answer)
+            console.log(my__answer)
         }
     })
     return my_answer 
@@ -167,7 +220,7 @@ function bullits(len){
 
     function active_progrees(){
         let li=ul__bar.querySelectorAll('li')
-        console.log(li)
+        //console.log(li)
         li[current_quiz].classList.add('active')
     }
 
@@ -176,4 +229,32 @@ function bullits(len){
 
 document.querySelector('form').onsubmit=function(e){
     e.preventDefault()
+}
+
+
+
+function fetch_resultant(data,answers){
+    let corrections=document.querySelector('.correction') 
+    let r=0
+    for(let i=0;i<data.length;i++){
+
+        if(answers[i] != data[i].correct){
+
+            corrections.innerHTML+=`
+        <div class="question">
+        <p># ${data[i].question}</p>
+        <ul class="ul__list">
+            <li class="${answers[i]=='a' ? 'incorrect' : ''} ${data[i].correct=='a' ? 'correct' : ''} ">${data[i].a}</li>
+            <li class="${answers[i]=='b' ? 'incorrect' : ''} ${data[i].correct=='b' ? 'correct' : ''}">${data[i].b}</li>
+            <li class="${answers[i]=='c' ? 'incorrect' : ''} ${data[i].correct=='c' ? 'correct' : ''}">${data[i].c}</li>
+            <li class="${answers[i]=='d' ? 'incorrect' : ''} ${data[i].correct=='d' ? 'correct' : ''}">${data[i].d}</li>
+            <li class="exp">
+                ${data[i].Explication}
+            </li>
+        </ul>
+    </div>
+        
+        `
+    }
+    }
 }
