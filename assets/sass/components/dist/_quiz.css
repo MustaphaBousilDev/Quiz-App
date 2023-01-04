@@ -16,7 +16,7 @@
 }
 @media screen and (max-width: 800px) {
   .quiz .content {
-    min-height: 800px;
+    min-height: 700px;
   }
 }
 .quiz .content .head {

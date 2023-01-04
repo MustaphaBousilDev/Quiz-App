@@ -19,6 +19,9 @@ body{
     color: var(--text-color);
     transition: .5s; // For animation dark mode
     background-color: rgb(54, 188, 246);
+    @media screen and (max-width:800px){
+        height: 150vh;
+    }
 }
 
 h1,h2,h3{

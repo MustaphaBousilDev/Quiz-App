@@ -43,6 +43,7 @@
 @media screen and (max-width: 700px) {
   .step-wizard-list {
     flex-direction: column;
+    margin-top: 300px;
   }
 }
 
